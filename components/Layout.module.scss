@@ -1,0 +1,91 @@
+.darkMode {
+  --color-ui-background: #000;
+  --color-ui-foreground: #fff;
+  --color-ui-hover: #aaa;
+}
+
+.lightMode {
+  --color-ui-background: #fff;
+  --color-ui-foreground: #000;
+  --color-ui-hover: #555;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  height: calc(100%);
+  background-color: var(--color-ui-background);
+  color: var(--color-ui-foreground);
+  transition: all $mode-transition-speed ease;
+  transition-property: background-color, padding, font-size;
+
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-ui-foreground) var(--color-ui-background);
+  }
+
+  // TODO: https://stackoverflow.com/a/57483486/2088626
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 1.75rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-ui-foreground);
+    border-radius: 20px;
+    border: 0.75rem solid;
+    border-color: var(--color-ui-background);
+  }
+
+  @include lg {
+    padding: 1rem;
+    height: calc(100% - 2rem);
+  }
+
+  .mainContainer {
+    flex: 1;
+    max-width: #{$screen-xl-min};
+    display: flex;
+    flex-direction: column;
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column-reverse;
+      overflow: auto;
+
+      @include md {
+        flex-direction: row;
+      }
+
+      @include firefox-only {
+        &:after {
+          content: "";
+          height: 50px;
+          width: 0.5rem;
+          display: block;
+        }
+      }
+
+      > section {
+        overflow: auto;
+        padding: 2rem;
+        flex: 1;
+        display: flex;
+      }
+    }
+  }
+
+  div[data-animate="color"],
+  img,
+  a,
+  button {
+    @include transition-mode;
+  }
+}

@@ -1,0 +1,20 @@
+.container {
+  line-height: 1.5rem;
+  letter-spacing: 0.04rem;
+
+  a {
+    color: var(--color-ui-foreground);
+
+    &:visited {
+      color: var(--color-ui-hover);
+    }
+
+    &:hover {
+      color: var(--color-ui-hover);
+    }
+
+    &:hover:visited {
+      color: var(--color-ui-foreground);
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+
+  @include md {
+    width: auto;
+    height: 100%;
+    flex-direction: row;
+  }
+
+  .nav {
+    padding: 1rem 1rem;
+    border-top: 0.5rem solid var(--color-ui-foreground);
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    @include md {
+      padding: 2rem 1rem;
+      flex-direction: column;
+      border-top: none;
+      border-right: 0.5rem solid var(--color-ui-foreground);
+    }
+
+    a,
+    button {
+      font-size: 2rem;
+      height: 2rem;
+      color: var(--color-ui-foreground);
+
+      @include md {
+        font-size: 3rem;
+        height: 3rem;
+      }
+
+      &:hover {
+        color: var(--color-ui-hover);
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .divider {
+      flex: 1;
+    }
+  }
+}

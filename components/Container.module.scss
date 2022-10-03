@@ -1,0 +1,8 @@
+.container {
+  border-top: 0.5rem solid var(--color-ui-foreground);
+
+  @include lg {
+    border-radius: 1rem;
+    border: 0.5rem solid var(--color-ui-foreground);
+  }
+}

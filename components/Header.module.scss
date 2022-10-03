@@ -1,0 +1,23 @@
+.header {
+  margin: 1rem 0 1rem 0;
+
+  @include lg {
+    margin: 1rem 0 2rem 0;
+  }
+
+  h1 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    overflow: hidden;
+    transition: font-size $mode-transition-speed ease;
+
+    @include sm {
+      font-size: 2rem;
+    }
+
+    @include xl {
+      font-size: 3rem;
+    }
+  }
+}
