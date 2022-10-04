@@ -1,3 +1,7 @@
+@use "../styles/mixins";
+@use "../styles/globals";
+@use "../styles/breakpoints";
+
 .darkMode {
   --color-ui-background: #000;
   --color-ui-foreground: #fff;
@@ -16,7 +20,7 @@
   height: calc(100%);
   background-color: var(--color-ui-background);
   color: var(--color-ui-foreground);
-  transition: all $mode-transition-speed ease;
+  transition: all globals.$mode-transition-speed ease;
   transition-property: background-color, padding, font-size;
 
   /* Firefox */
@@ -43,14 +47,14 @@
     border-color: var(--color-ui-background);
   }
 
-  @include lg {
+  @include mixins.lg {
     padding: 1rem;
     height: calc(100% - 2rem);
   }
 
   .mainContainer {
     flex: 1;
-    max-width: #{$screen-xl-min};
+    max-width: #{breakpoints.$screen-xl-min};
     display: flex;
     flex-direction: column;
 
@@ -60,11 +64,11 @@
       flex-direction: column-reverse;
       overflow: auto;
 
-      @include md {
+      @include mixins.md {
         flex-direction: row;
       }
 
-      @include firefox-only {
+      @include mixins.firefox-only {
         &:after {
           content: "";
           height: 50px;
@@ -86,6 +90,6 @@
   img,
   a,
   button {
-    @include transition-mode;
+    @include mixins.transition-mode;
   }
 }

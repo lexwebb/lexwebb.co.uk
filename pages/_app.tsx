@@ -2,9 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 
 import styles from "../styles/_app.module.scss";
-import "../styles/_breakpoints.scss";
-import "../styles/_globals.scss";
-import "../styles/_mixins.scss";
 
 import Layout from "../components/Layout";
 import useDarkMode from "use-dark-mode";

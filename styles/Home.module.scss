@@ -1,3 +1,5 @@
+@use "mixins";
+
 .container {
   display: grid;
   grid-auto-columns: 1fr;
@@ -9,7 +11,7 @@
     "links"
     "about";
 
-  @include md {
+  @include mixins.md {
     grid-template-columns: min-content 1fr;
     grid-template-rows: min-content 1fr;
     gap: 2rem;
@@ -35,11 +37,11 @@
       font-size: 1rem;
       text-decoration: none;
 
-      @include md {
+      @include mixins.md {
         font-size: 1.5rem;
       }
 
-      @include lg {
+      @include mixins.lg {
         font-size: 2rem;
       }
 
@@ -53,14 +55,14 @@
         min-height: 1.5rem;
         min-width: 1.5rem;
 
-        @include md {
+        @include mixins.md {
           height: 2rem;
           width: 2rem;
           min-height: 2rem;
           min-width: 2rem;
         }
 
-        @include lg {
+        @include mixins.lg {
           height: 3rem;
           width: 3rem;
           min-height: 3rem;
@@ -79,17 +81,17 @@
     width: 8rem;
     height: 8rem;
 
-    @include sm {
+    @include mixins.sm {
       width: 12rem;
       height: 12rem;
     }
 
-    @include md {
+    @include mixins.md {
       width: 15rem;
       height: 15rem;
     }
 
-    @include lg {
+    @include mixins.lg {
       width: 18rem;
       height: 18rem;
     }

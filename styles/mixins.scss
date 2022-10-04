@@ -1,34 +1,37 @@
+@use "breakpoints";
+@use "globals";
+
 // Extra small devices
 @mixin xs {
-  @media (min-width: #{$screen-xs-min}) {
+  @media (min-width: #{breakpoints.$screen-xs-min}) {
     @content;
   }
 }
 
 // Small devices
 @mixin sm {
-  @media (min-width: #{$screen-sm-min}) {
+  @media (min-width: #{breakpoints.$screen-sm-min}) {
     @content;
   }
 }
 
 // Medium devices
 @mixin md {
-  @media (min-width: #{$screen-md-min}) {
+  @media (min-width: #{breakpoints.$screen-md-min}) {
     @content;
   }
 }
 
 // Large devices
 @mixin lg {
-  @media (min-width: #{$screen-lg-min}) {
+  @media (min-width: #{breakpoints.$screen-lg-min}) {
     @content;
   }
 }
 
 // Extra large devices
 @mixin xl {
-  @media (min-width: #{$screen-xl-min}) {
+  @media (min-width: #{breakpoints.$screen-xl-min}) {
     @content;
   }
 }
@@ -45,6 +48,6 @@
 }
 
 @mixin transition-mode() {
-  transition: all $mode-transition-speed ease;
+  transition: all globals.$mode-transition-speed ease;
   transition-property: color, background-color, border-color, padding, font-size;
 }

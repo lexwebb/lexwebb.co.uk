@@ -1,10 +1,12 @@
+@use "../styles/mixins";
+
 .navContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: auto;
 
-  @include md {
+  @include mixins.md {
     width: auto;
     height: 100%;
     flex-direction: row;
@@ -17,7 +19,7 @@
     flex-direction: row;
     gap: 2rem;
 
-    @include md {
+    @include mixins.md {
       padding: 2rem 1rem;
       flex-direction: column;
       border-top: none;
@@ -30,7 +32,7 @@
       height: 2rem;
       color: var(--color-ui-foreground);
 
-      @include md {
+      @include mixins.md {
         font-size: 3rem;
         height: 3rem;
       }
