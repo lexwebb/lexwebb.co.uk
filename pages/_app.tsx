@@ -4,12 +4,10 @@ import type { AppProps } from "next/app";
 import styles from "../styles/_app.module.scss";
 
 import Layout from "../components/Layout";
-import useDarkMode from "use-dark-mode";
 import React from "react";
+import { AnimatePresence } from "framer-motion";
 
 const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const { value } = useDarkMode();
-
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,7 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div className={styles.app}>
       <Providers>
         <Layout>
-          <Component {...pageProps} />
+          <AnimatePresence exitBeforeEnter initial={false}>
+            <Component {...pageProps} />
+          </AnimatePresence>
         </Layout>
       </Providers>
     </div>
