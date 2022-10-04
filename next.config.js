@@ -1,12 +1,11 @@
+const path = require('path')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   sassOptions: {
-    prependData: `
-      @import "styles/mixins";
-      @import "styles/breakpoints";
-      @import "styles/globals";`,
+    includePaths: [path.join(__dirname, 'styles')],
   },
 };
 
