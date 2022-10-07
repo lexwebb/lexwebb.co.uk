@@ -11,7 +11,7 @@ interface Props {
 
 const CV: NextPage<Props> = ({ markdown }) => {
   return (
-    <Page>
+    <Page name="CV">
       <Markdown markdown={markdown} />
     </Page>
   );
