@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useCrumbs } from "../contexts/CrumbContext";
 
 type Props = {
   className?: string;
@@ -12,6 +14,14 @@ const Page: React.FC<React.PropsWithChildren<Props>> = ({
   children,
   name,
 }) => {
+  const router = useRouter();
+  const { registerPage } = useCrumbs();
+
+  useEffect(() => {
+    if (router.asPath == "/") registerPage("Home", router.asPath);
+    else if (name) registerPage(name, router.asPath);
+  }, [name, registerPage, router, router.asPath]);
+
   return (
     <motion.div
       className={className}

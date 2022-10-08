@@ -33,7 +33,7 @@
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 1.75rem;
+    width: 0.25rem;
   }
 
   *::-webkit-scrollbar-track {
@@ -42,8 +42,7 @@
 
   *::-webkit-scrollbar-thumb {
     background-color: var(--color-ui-foreground);
-    border-radius: 20px;
-    border: 0.75rem solid;
+    border-right: 0;
     border-color: var(--color-ui-background);
   }
 
@@ -77,11 +76,16 @@
         }
       }
 
-      > section {
-        overflow: auto;
-        padding: 2rem;
-        flex: 1;
+      .innerContent {
         display: flex;
+        flex-direction: column;
+        padding: 2rem;
+
+        > section {
+          overflow: auto;
+          flex: 1;
+          display: flex;
+        }
       }
     }
   }

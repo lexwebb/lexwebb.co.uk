@@ -4,10 +4,11 @@ import type { AppProps } from "next/app";
 import styles from "../styles/_app.module.scss";
 
 import Layout from "../components/Layout";
-import React from "react";
+import React, { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+import { CrumbContextProvider, useCrumbs } from "../contexts/CrumbContext";
 
-const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
+const MountedProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -24,16 +25,32 @@ const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
   return body;
 };
 
+const RouteChangeHandler: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
+  const { addCrumb, currentPage } = useCrumbs();
+
+  useEffect(() => {
+    if (currentPage) addCrumb(currentPage.name, currentPage.path);
+  }, [addCrumb, currentPage]);
+
+  return <>{children}</>;
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className={styles.app}>
-      <Providers>
-        <Layout>
-          <AnimatePresence exitBeforeEnter initial={false}>
-            <Component {...pageProps} />
-          </AnimatePresence>
-        </Layout>
-      </Providers>
+      <MountedProvider>
+        <CrumbContextProvider>
+          <RouteChangeHandler>
+            <Layout>
+              <AnimatePresence exitBeforeEnter initial={false}>
+                <Component {...pageProps} />
+              </AnimatePresence>
+            </Layout>
+          </RouteChangeHandler>
+        </CrumbContextProvider>
+      </MountedProvider>
     </div>
   );
 }
