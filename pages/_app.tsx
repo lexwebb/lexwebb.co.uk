@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import React, { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { CrumbContextProvider, useCrumbs } from "../contexts/CrumbContext";
+import { routes } from "../config/routes";
 
 const MountedProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [mounted, setMounted] = React.useState(false);
@@ -28,11 +29,16 @@ const MountedProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 const RouteChangeHandler: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const { addCrumb, currentPage } = useCrumbs();
+  const { addCrumb, currentPage, resetCrumbs } = useCrumbs();
 
   useEffect(() => {
-    if (currentPage) addCrumb(currentPage.name, currentPage.path);
-  }, [addCrumb, currentPage]);
+    if (currentPage) {
+      if (routes[currentPage.path]) {
+        resetCrumbs();
+      }
+      addCrumb(currentPage.name, currentPage.path);
+    }
+  }, [addCrumb, currentPage, resetCrumbs]);
 
   return <>{children}</>;
 };

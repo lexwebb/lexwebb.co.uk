@@ -21,7 +21,7 @@ const Breadcrumbs: React.FC<Props> = ({ className }) => {
       <span className={styles.cursor} data-animate="color">
         &gt;
       </span>
-      {crumbs.slice(0, crumbs.length - 1).map((crumb, index) => (
+      {crumbs.slice(0, crumbs.length).map((crumb, index) => (
         <div key={index} className={styles.linkContainer}>
           <Link href={crumb.path}>
             <a>{crumb.name}</a>

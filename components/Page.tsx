@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useCrumbs } from "../contexts/CrumbContext";
+import styles from "./Page.module.scss";
+import classNames from "classnames";
 
 type Props = {
   className?: string;
@@ -24,7 +26,7 @@ const Page: React.FC<React.PropsWithChildren<Props>> = ({
 
   return (
     <motion.div
-      className={className}
+      className={classNames(styles.container, className)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
