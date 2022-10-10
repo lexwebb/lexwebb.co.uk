@@ -11,7 +11,6 @@ import Nav from "./Nav";
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { value: isDarkMode } = useDarkMode();
 
-  const tab = "home";
   return (
     <div
       className={classNames(
@@ -22,7 +21,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       <div className={styles.mainContainer}>
         <Header />
         <Container className={styles.content} data-animate="color">
-          <Nav tab={tab} />
+          <Nav />
           <div className={styles.innerContent}>
             <Breadcrumbs />
             <section>{children}</section>
