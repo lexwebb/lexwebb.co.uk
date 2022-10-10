@@ -1,18 +1,18 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 
-import styles from "../styles/_app.module.scss";
+import { AnimatePresence } from "framer-motion";
+import type { AppProps } from "next/app";
+import React, { useEffect, useState } from "react";
 
 import Layout from "../components/Layout";
-import React, { useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
-import { CrumbContextProvider, useCrumbs } from "../contexts/CrumbContext";
 import { routes } from "../config/routes";
+import { CrumbContextProvider, useCrumbs } from "../contexts/CrumbContext";
+import styles from "../styles/_app.module.scss";
 
 const MountedProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [mounted, setMounted] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
   }, []);
 

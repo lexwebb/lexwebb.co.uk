@@ -1,6 +1,7 @@
-import React from "react";
-import P5 from "p5"; //Import this for typechecking and intellisense
 import dynamic from "next/dynamic";
+import P5 from "p5";
+import React from "react";
+
 import { useSketchSize } from "./SketchContainer";
 
 const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {

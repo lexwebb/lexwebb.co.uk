@@ -1,10 +1,9 @@
-import React, { forwardRef, PropsWithChildren } from "react";
-import Container from "./Container";
+import React, { PropsWithChildren, forwardRef } from "react";
+
 import styles from "./Card.module.scss";
+import Container from "./Container";
 
-type Props = {};
-
-const Card = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(function Card(
+const Card = forwardRef<HTMLDivElement, PropsWithChildren>(function Card(
   { children },
   ref
 ) {

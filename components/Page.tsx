@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import classNames from "classnames";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+
 import { useCrumbs } from "../contexts/CrumbContext";
 import styles from "./Page.module.scss";
-import classNames from "classnames";
 
 type Props = {
   className?: string;

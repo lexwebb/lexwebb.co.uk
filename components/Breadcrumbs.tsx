@@ -1,8 +1,9 @@
-import React from "react";
-import styles from "./Breadcrumbs.module.scss";
-import { useCrumbs } from "../contexts/CrumbContext";
 import classNames from "classnames";
 import Link from "next/link";
+import React from "react";
+
+import { useCrumbs } from "../contexts/CrumbContext";
+import styles from "./Breadcrumbs.module.scss";
 
 interface Props {
   className?: string;

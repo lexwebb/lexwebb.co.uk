@@ -1,9 +1,10 @@
-import Markdown from "../components/Markdown";
+import fs from "fs";
+
+import { NextPage } from "next";
 import React from "react";
 
+import Markdown from "../components/Markdown";
 import Page from "../components/Page";
-import { NextPage } from "next";
-import fs from "fs";
 
 interface Props {
   markdown: string;

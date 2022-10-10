@@ -1,6 +1,7 @@
 import React from "react";
-import Typography from "./Typography";
+
 import styles from "./Header.module.scss";
+import Typography from "./Typography";
 
 const Header = () => {
   return (

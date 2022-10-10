@@ -1,13 +1,14 @@
-import styles from "../styles/Home.module.scss";
-import GithubIcon from "../icons/GithubIcon";
-import { RiLinkedinBoxFill } from "react-icons/ri";
-import Markdown from "../components/Markdown";
-import React from "react";
+import fs from "fs";
 
-import Page from "../components/Page";
 import { NextPage } from "next";
 import Image from "next/image";
-import fs from "fs";
+import React from "react";
+import { RiLinkedinBoxFill } from "react-icons/ri";
+
+import Markdown from "../components/Markdown";
+import Page from "../components/Page";
+import GithubIcon from "../icons/GithubIcon";
+import styles from "../styles/Home.module.scss";
 
 interface Props {
   markdown: string;

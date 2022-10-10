@@ -1,5 +1,6 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { useElementSize } from "usehooks-ts";
+
 import styles from "./SketchContainer.module.scss";
 
 type Props = {
@@ -7,11 +8,11 @@ type Props = {
   height?: number;
 };
 
-const SketchContainerContext = React.createContext<Required<Props>>(
+const SketchContainerContext = createContext<Required<Props>>(
   null as unknown as Required<Props>
 );
 
-export const useSketchSize = () => React.useContext(SketchContainerContext);
+export const useSketchSize = () => useContext(SketchContainerContext);
 
 const SketchContainer: React.FC<React.PropsWithChildren<Props>> = ({
   width,

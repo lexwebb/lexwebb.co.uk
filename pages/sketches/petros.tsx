@@ -1,15 +1,11 @@
+import { NextPage } from "next";
 import React from "react";
 
 import Page from "../../components/Page";
-import { NextPage } from "next";
-import PetrosSketch from "../../components/sketches/Petros";
 import SketchContainer from "../../components/SketchContainer";
+import PetrosSketch from "../../components/sketches/Petros";
 
-interface Props {
-  markdown: string;
-}
-
-const Petros: NextPage<Props> = ({ markdown }) => {
+const Petros: NextPage = () => {
   return (
     <Page name="Petros">
       <SketchContainer height={300}>

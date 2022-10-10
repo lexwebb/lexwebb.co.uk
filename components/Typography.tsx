@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { PropsWithChildren } from "react";
+
 import styles from "./Typography.module.scss";
 
 type Props = {

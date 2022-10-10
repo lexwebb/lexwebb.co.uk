@@ -1,10 +1,10 @@
-import React, { useMemo } from "react";
+import { NextPage } from "next";
+import React from "react";
 
 import Page from "../../components/Page";
-import { NextPage } from "next";
-import { Sketch } from "../../types";
 import SketchCard from "../../components/SketchCard";
 import { inDevEnvironment } from "../../devMode";
+import { Sketch } from "../../types";
 
 const sketches: (Sketch & { live: boolean })[] = [
   {
@@ -15,9 +15,7 @@ const sketches: (Sketch & { live: boolean })[] = [
   },
 ];
 
-interface Props {}
-
-const Sketches: NextPage<Props> = () => {
+const Sketches: NextPage = () => {
   const liveSketches = sketches.filter((s) =>
     inDevEnvironment ? true : s.live
   );

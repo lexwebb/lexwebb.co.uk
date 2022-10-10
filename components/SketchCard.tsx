@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React from "react";
+
 import { Sketch } from "../types";
 import Card from "./Card";
-import Typography from "./Typography";
 import styles from "./SketchCard.module.scss";
+import Typography from "./Typography";
 
 type Props = {
   sketch: Sketch;

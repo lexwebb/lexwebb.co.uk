@@ -1,8 +1,8 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import ReactMarkdown from "react-markdown";
+
 import styles from "./Markdown.module.scss";
-import fs from "fs";
 
 type Props = {
   markdown: string;
@@ -13,7 +13,7 @@ const Markdown: React.FC<Props> = ({ markdown }) => {
     <ReactMarkdown
       className={styles.container}
       components={{
-        a: ({ node, ...props }) => {
+        a: ({ node: _, ...props }) => {
           if (props.href?.startsWith("/"))
             return (
               <Link href={props.href}>
@@ -21,7 +21,6 @@ const Markdown: React.FC<Props> = ({ markdown }) => {
               </Link>
             );
 
-          // eslint-disable-next-line jsx-a11y/anchor-has-content
           return <a target="_blank" rel="noopener noreferrer" {...props} />;
         },
       }}

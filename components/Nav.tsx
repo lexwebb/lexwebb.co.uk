@@ -1,15 +1,12 @@
-import React from "react";
-import styles from "./Nav.module.scss";
-import { RiSunLine, RiSunFill } from "react-icons/ri";
-import { routes } from "../config/routes";
 import Link from "next/link";
+import React, { createElement } from "react";
+import { RiSunFill, RiSunLine } from "react-icons/ri";
 import useDarkMode from "use-dark-mode";
 
-type Props = {
-  tab: "home" | "cv" | "projects" | "contact";
-};
+import { routes } from "../config/routes";
+import styles from "./Nav.module.scss";
 
-function Nav({ tab }: Props) {
+function Nav() {
   const { value: isDarkMode, toggle } = useDarkMode();
 
   return (
@@ -17,7 +14,7 @@ function Nav({ tab }: Props) {
       <div className={styles.nav} data-animate="color">
         {Object.entries(routes).map(([path, route]) => (
           <Link href={path} key={path} aria-label={route.name}>
-            <button>{React.createElement(route.icon, {})}</button>
+            <button>{createElement(route.icon, {})}</button>
           </Link>
         ))}
         <span className={styles.divider} />
