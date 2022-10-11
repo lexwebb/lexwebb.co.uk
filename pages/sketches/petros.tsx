@@ -8,7 +8,7 @@ import PetrosSketch from "../../components/sketches/Petros";
 const Petros: NextPage = () => {
   return (
     <Page name="Petros">
-      <SketchContainer height={300}>
+      <SketchContainer height={500}>
         <PetrosSketch />
       </SketchContainer>
     </Page>
