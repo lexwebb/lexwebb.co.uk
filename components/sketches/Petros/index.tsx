@@ -39,7 +39,6 @@ const Petros: React.FC = () => {
 
   const setup = (p5: P5, canvasParentRef: Element) => {
     const vars = getVars(p5);
-    console.log(vars);
     setVars(vars);
   };
 

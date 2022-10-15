@@ -1,5 +1,6 @@
 import P5 from "p5";
 
+import { sequence } from "../utils";
 import { Globals } from "./types";
 
 type FlawVertex = {
@@ -11,12 +12,9 @@ export const getGroundVars = (
   p5: P5,
   globals: Globals
 ): { floorSegments: FlawVertex[] } => {
-  const floorSegmentXs = Array.from(
-    { length: globals.GROUND_SEGMENTS + 1 },
-    (_, i) => {
-      return i * (p5.width / globals.GROUND_SEGMENTS);
-    }
-  );
+  const floorSegmentXs = sequence(globals.GROUND_SEGMENTS + 1).map((_, i) => {
+    return i * (p5.width / globals.GROUND_SEGMENTS);
+  });
 
   const floorSegments = floorSegmentXs.map((segment) => {
     const jiggle = p5.random(
