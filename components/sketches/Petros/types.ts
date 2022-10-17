@@ -3,13 +3,15 @@ export interface Globals {
   FLOOR_HEIGHT: number;
   FLOOR_JIGGLE: number;
   ROOM_SIZE: number;
+  MIN_BUILDING_HEIGHT: number;
   MAX_BUILDING_WIDTH: number;
   MIN_BUILDING_WIDTH: number;
   MAX_BUILDING_HEIGHT: number;
 }
 
 export interface Building {
-  depth: number;
+  width: number;
+  height: number;
   rooms: Room[][];
 }
 

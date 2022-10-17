@@ -4,6 +4,7 @@ import useDarkMode from "use-dark-mode";
 
 import P5Sketch from "../../P5Sketch";
 import { useSketchSize } from "../../SketchContainer";
+import { hashString } from "../utils";
 import { drawBuilding, generateBuilding } from "./building";
 import { drawGround, getGroundVars } from "./ground";
 import { Globals } from "./types";
@@ -20,9 +21,10 @@ const Petros: React.FC = () => {
     FLOOR_HEIGHT: height - 50,
     FLOOR_JIGGLE: 5,
     ROOM_SIZE: 50,
+    MIN_BUILDING_HEIGHT: 2,
     MAX_BUILDING_HEIGHT: 5,
-    MAX_BUILDING_WIDTH: 5,
-    MIN_BUILDING_WIDTH: 2,
+    MAX_BUILDING_WIDTH: 7,
+    MIN_BUILDING_WIDTH: 4,
   };
 
   const getVars = (p5: P5) => {

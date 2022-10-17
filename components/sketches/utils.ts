@@ -1,12 +1,6 @@
 import P5 from "p5";
 
-export const getRandomIntRange = (min: number, max: number) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-export type WeightedRandom = { value: number; weight: number };
+export type WeightedRandom<T = any> = { value: T; weight: number };
 
 export const getWeightedRandom = (p5: P5, weights: WeightedRandom[]) => {
   // get sum of all the weights.
@@ -31,7 +25,22 @@ export const getWeightedRandom = (p5: P5, weights: WeightedRandom[]) => {
     ran -= opt.weight;
   }
 
-  return 0;
+  return weights[0].value;
+};
+
+export const getExpoWeightedRandom = (
+  p5: P5,
+  min: number,
+  max: number,
+  reverse = false
+) => {
+  return getWeightedRandom(
+    p5,
+    sequence(min, max).map((i) => ({
+      value: i,
+      weight: reverse ? p5.exp(max - i) : p5.exp(i),
+    }))
+  );
 };
 
 export const sequence = (startOrEnd: number, end?: number) => {
@@ -63,4 +72,19 @@ export const getBellCurveRandom = (
     num += min; // offset to min
   }
   return num;
+};
+
+export const jiggle = (p5: P5, value: number, jiggleAmount = 0.5) => {
+  return value + p5.random(-jiggleAmount, jiggleAmount);
+};
+
+export const hashString = (str: string) => {
+  let hash = 0;
+  if (str.length === 0) return hash;
+  for (let i = 0; i < str.length; i++) {
+    const chr = str.charCodeAt(i);
+    hash = (hash << 5) - hash + chr;
+    hash |= 0;
+  }
+  return hash;
 };

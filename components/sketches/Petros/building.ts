@@ -3,6 +3,7 @@ import P5 from "p5";
 import {
   WeightedRandom,
   getBellCurveRandom,
+  getExpoWeightedRandom,
   getWeightedRandom,
   sequence,
 } from "../utils";
@@ -22,43 +23,99 @@ import { Building, Globals, Room } from "./types";
 // };
 
 export const generateBuilding = (p5: P5, globals: Globals): Building => {
-  const layers = p5.round(p5.random(1, globals.MAX_BUILDING_HEIGHT));
+  const buildingHeight = p5.round(
+    getExpoWeightedRandom(
+      p5,
+      globals.MIN_BUILDING_HEIGHT,
+      globals.MAX_BUILDING_HEIGHT
+    )
+  );
   const buildingWidth = p5.round(
-    p5.random(globals.MIN_BUILDING_WIDTH, globals.MAX_BUILDING_WIDTH)
+    getBellCurveRandom(
+      p5,
+      globals.MIN_BUILDING_WIDTH,
+      globals.MAX_BUILDING_WIDTH
+    )
   );
 
-  const typeArray: Building["rooms"][0][0]["type"][] = [
-    "room",
-    "spire",
-    "crenelation",
+  const lowerWeights: WeightedRandom<Building["rooms"][0][0]["type"]>[] = [
+    { value: "room", weight: 6 },
+    { value: "crenelation", weight: 4 },
+    { value: "spire", weight: 1 },
   ];
 
-  // https://editor.p5js.org/runemadsen/sketches/S1IZV_HAZ
-  // Use to generate a weighted random distribution of rooms
+  const midWeights: WeightedRandom<Building["rooms"][0][0]["type"]>[] = [
+    { value: "room", weight: 4 },
+    { value: "crenelation", weight: 6 },
+    { value: "spire", weight: 2 },
+  ];
 
-  console.log({ layers, buildingWidth });
+  const upperWeights: WeightedRandom<Building["rooms"][0][0]["type"]>[] = [
+    { value: "room", weight: 3 },
+    { value: "crenelation", weight: 2 },
+    { value: "spire", weight: 6 },
+  ];
+
+  const getWeightByFloor = (floor: number) => {
+    if (floor < buildingHeight / 3) {
+      return lowerWeights;
+    } else if (floor < (buildingHeight / 3) * 2) {
+      return midWeights;
+    } else {
+      return upperWeights;
+    }
+  };
+
   return {
-    depth: layers,
-    rooms: sequence(layers).map((i) => {
-      const noRooms = p5.round(
-        getBellCurveRandom(p5, 1, buildingWidth - 1, 0.25 * i)
-      );
-      console.log({ noRooms, i });
-
+    width: buildingWidth,
+    height: buildingHeight,
+    rooms: sequence(buildingHeight).map((i) => {
       const rooms: Room[] = [];
+      let full = false;
 
-      // TODO, switch to add one room at a time a check for remaining space use a while loop, bell curve for room width
-      sequence(noRooms).forEach((j) => {
-        const previousRoom = rooms[j - 1];
-        const minX = previousRoom ? previousRoom.x + previousRoom.width : 0;
-        const xLoc = p5.round(p5.random(minX, buildingWidth - noRooms + j + 1));
-        rooms.push({
-          x: xLoc,
-          width: 1,
-          height: p5.round(p5.random(1, 2)),
-          type: typeArray[p5.round(p5.random(0, 2))],
-        });
-      });
+      const type = getWeightedRandom(p5, getWeightByFloor(i));
+
+      const getPreviousRoomEnd = () => {
+        if (rooms.length === 0) return 0;
+        return rooms[rooms.length - 1].width + rooms[rooms.length - 1].x;
+      };
+
+      const maxNoRooms = p5.round(getExpoWeightedRandom(p5, 1, 3, true));
+
+      while (!full) {
+        const maxWidth =
+          type === "spire"
+            ? 1
+            : p5.round(
+                getBellCurveRandom(
+                  p5,
+                  1,
+                  buildingWidth - getPreviousRoomEnd(),
+                  0.5 * i
+                )
+              );
+
+        const roomWidth = p5.round(getBellCurveRandom(p5, 1, maxWidth));
+        const roomX = p5.round(
+          p5.random(getPreviousRoomEnd(), buildingWidth - roomWidth)
+        );
+
+        const room: Room = {
+          width: roomWidth,
+          x: roomX,
+          height: type === "spire" ? 2 : p5.round(p5.random(1, 2)),
+          type,
+        };
+
+        rooms.push(room);
+
+        if (
+          getPreviousRoomEnd() >= buildingWidth ||
+          rooms.length >= maxNoRooms
+        ) {
+          full = true;
+        }
+      }
 
       return rooms;
     }),
@@ -66,27 +123,60 @@ export const generateBuilding = (p5: P5, globals: Globals): Building => {
 };
 
 export const drawBuilding = (p5: P5, building: Building, globals: Globals) => {
-  const xOffset =
-    p5.width / 2 - (building.rooms[0].length * globals.ROOM_SIZE) / 2;
+  const xOffset = p5.width / 2 - (building.width * globals.ROOM_SIZE) / 2;
 
+  console.log(building.rooms);
   building.rooms
     .slice()
     .reverse()
     .forEach((layer, index) => {
       const layerHeightOffset =
-        (building.rooms.length - index) * globals.ROOM_SIZE;
+        (building.rooms.length - index - 1) * globals.ROOM_SIZE;
       layer.forEach((room) => {
-        p5.fill(20 * index);
         const roomOffset = xOffset + room.x * globals.ROOM_SIZE;
-        // TODO refactor this spaghetti to be more readable
-        p5.rect(
-          room.x + roomOffset,
-          globals.FLOOR_HEIGHT,
-          room.width * globals.ROOM_SIZE,
-          -(layerHeightOffset + room.height * globals.ROOM_SIZE),
-          3,
-          3
-        );
+
+        const xPos = roomOffset;
+        const yPos = globals.FLOOR_HEIGHT;
+        const width = room.width * globals.ROOM_SIZE;
+        const height = -(layerHeightOffset + room.height * globals.ROOM_SIZE);
+        const radius = 3;
+        const initY = yPos + height;
+
+        switch (room.type) {
+          case "crenelation":
+            p5.strokeJoin(p5.ROUND);
+            p5.beginShape();
+            p5.vertex(xPos, yPos);
+
+            sequence(room.width).forEach((i) => {
+              const x1 = xPos + i * globals.ROOM_SIZE;
+              const x2 = x1 + globals.ROOM_SIZE / 2;
+              const x3 = x1 + globals.ROOM_SIZE;
+              const y1 = initY + globals.ROOM_SIZE / 2;
+              const y2 = initY;
+              p5.vertex(x1, y1);
+              p5.vertex(x2, y1);
+              p5.vertex(x2, y2);
+              p5.vertex(x3, y2);
+            });
+
+            p5.vertex(xPos + width, yPos);
+
+            p5.endShape();
+            break;
+
+          case "spire":
+            p5.rect(xPos, yPos, width, height, radius, radius);
+            p5.ellipse(
+              xPos + globals.ROOM_SIZE / 3,
+              initY + globals.ROOM_SIZE / 2,
+              globals.ROOM_SIZE / 3,
+              globals.ROOM_SIZE / 4
+            );
+            break;
+          default:
+            p5.rect(xPos, yPos, width, height, radius, radius);
+        }
       });
     });
 };
