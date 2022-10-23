@@ -4,7 +4,6 @@ import useDarkMode from "use-dark-mode";
 
 import P5Sketch from "../../P5Sketch";
 import { useSketchSize } from "../../SketchContainer";
-import { hashString } from "../utils";
 import { drawBuilding, generateBuilding } from "./building";
 import { drawGround, getGroundVars } from "./ground";
 import { Globals } from "./types";

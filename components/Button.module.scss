@@ -1,0 +1,18 @@
+.button {
+  background-color: var(--color-ui-background);
+  color: var(--color-ui-foreground);
+  border: 0.25rem solid var(--color-ui-foreground);
+  padding: 0.5rem;
+  min-width: 7rem;
+  font-weight: bold;
+
+  &:hover {
+    background-color: var(--color-ui-hover);
+    color: var(--color-ui-background);
+  }
+
+  &:active {
+    background-color: var(--color-ui-foreground);
+    color: var(--color-ui-background);
+  }
+}
