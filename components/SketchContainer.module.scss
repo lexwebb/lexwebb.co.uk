@@ -1,7 +1,7 @@
 .container {
   width: calc(100% - 1rem);
 
-  canvas:last-child {
+  canvas:not(:first-child):last-child {
     display: none;
   }
 }

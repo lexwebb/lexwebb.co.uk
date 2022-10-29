@@ -21,7 +21,7 @@ export const getGroundVars = (
       globals.FLOOR_HEIGHT - globals.FLOOR_JIGGLE,
       globals.FLOOR_HEIGHT + globals.FLOOR_JIGGLE
     );
-    return { x: segment, y: jiggle };
+    return { x: segment, y: jiggle - globals.FLOOR_JIGGLE };
   });
 
   return { floorSegments };

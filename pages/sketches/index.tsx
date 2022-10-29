@@ -11,7 +11,7 @@ const sketches: (Sketch & { live: boolean })[] = [
     title: "Petros",
     route: "/sketches/petros",
     description: "For my grandfather, artist and inspiration",
-    live: false,
+    live: true,
   },
 ];
 

@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import P5 from "p5";
 import React from "react";
 
-import { useSketchSize } from "./SketchContainer";
+import { useSketch } from "./SketchContainer";
 
 const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
   ssr: false,
@@ -14,7 +14,7 @@ interface ComponentProps {
 }
 
 const P5Sketch: React.FC<ComponentProps> = ({ setup, draw }) => {
-  const { width, height } = useSketchSize();
+  const { width, height } = useSketch();
 
   const defaultSetup = (p5: P5, canvasParentRef: Element) => {
     p5.createCanvas(width, height).parent(canvasParentRef);

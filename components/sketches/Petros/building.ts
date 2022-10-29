@@ -23,13 +23,8 @@ import { Building, Globals, Room } from "./types";
 // };
 
 export const generateBuilding = (p5: P5, globals: Globals): Building => {
-  const buildingHeight = p5.round(
-    getExpoWeightedRandom(
-      p5,
-      globals.MIN_BUILDING_HEIGHT,
-      globals.MAX_BUILDING_HEIGHT
-    )
-  );
+  const buildingHeight = globals.BUILDING_HEIGHT;
+
   const buildingWidth = p5.round(
     getBellCurveRandom(
       p5,
@@ -125,7 +120,6 @@ export const generateBuilding = (p5: P5, globals: Globals): Building => {
 export const drawBuilding = (p5: P5, building: Building, globals: Globals) => {
   const xOffset = p5.width / 2 - (building.width * globals.ROOM_SIZE) / 2;
 
-  console.log(building.rooms);
   building.rooms
     .slice()
     .reverse()

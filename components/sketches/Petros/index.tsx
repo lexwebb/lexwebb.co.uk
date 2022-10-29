@@ -1,50 +1,68 @@
 import P5 from "p5";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import useDarkMode from "use-dark-mode";
 
 import P5Sketch from "../../P5Sketch";
-import { useSketchSize } from "../../SketchContainer";
+import { useSketch } from "../../SketchContainer";
 import { drawBuilding, generateBuilding } from "./building";
 import { drawGround, getGroundVars } from "./ground";
 import { Globals } from "./types";
 
 const Petros: React.FC = () => {
-  const { height } = useSketchSize();
+  const { height, params } = useSketch();
   const { value } = useDarkMode();
-  const [vars, setVars] = useState<ReturnType<typeof getVars>>(
-    {} as unknown as ReturnType<typeof getVars>
+
+  const p5Ref = useRef<P5>();
+  const [vars, setVars] = useState<ReturnType<typeof getVars>>();
+
+  const getVars = useMemo(
+    () => (p5: P5) => {
+      const globals: Globals = {
+        GROUND_SEGMENTS: 10,
+        FLOOR_HEIGHT: height - 50,
+        FLOOR_JIGGLE: 5,
+        ROOM_SIZE: 50,
+        BUILDING_HEIGHT: params["floors"] || 5,
+        MAX_BUILDING_WIDTH: 7,
+        MIN_BUILDING_WIDTH: 4,
+      };
+
+      const seed = p5.random(1000);
+      p5.randomSeed(seed);
+      console.log(seed);
+
+      const ground = getGroundVars(p5, globals);
+      const building = generateBuilding(p5, globals);
+
+      return {
+        foreground: value ? "#fff" : "#000",
+        background: value ? "#000" : "#fff",
+        ground,
+        building,
+        globals,
+        seed,
+      };
+    },
+    [height, params, value]
   );
 
-  const globals: Globals = {
-    GROUND_SEGMENTS: 10,
-    FLOOR_HEIGHT: height - 50,
-    FLOOR_JIGGLE: 5,
-    ROOM_SIZE: 50,
-    MIN_BUILDING_HEIGHT: 2,
-    MAX_BUILDING_HEIGHT: 5,
-    MAX_BUILDING_WIDTH: 7,
-    MIN_BUILDING_WIDTH: 4,
-  };
-
-  const getVars = (p5: P5) => {
-    const ground = getGroundVars(p5, globals);
-    const building = generateBuilding(p5, globals);
-
-    return {
-      foreground: value ? "#fff" : "#000",
-      background: value ? "#000" : "#fff",
-      ground,
-      building,
-    };
-  };
+  useEffect(() => {
+    if (p5Ref.current) {
+      setVars(getVars(p5Ref.current));
+    }
+  }, [getVars]);
 
   const setup = (p5: P5, canvasParentRef: Element) => {
-    const vars = getVars(p5);
-    setVars(vars);
+    p5Ref.current = p5;
   };
 
   const draw = (p5: P5) => {
-    p5.background(0);
+    if (!vars) {
+      setVars(getVars(p5));
+      return;
+    }
+
+    p5.background(vars.background);
 
     // setup colors
     p5.color(vars.foreground);
@@ -52,10 +70,8 @@ const Petros: React.FC = () => {
     p5.strokeWeight(4);
     p5.stroke(vars.foreground);
 
-    drawBuilding(p5, vars.building, globals);
-    drawGround(p5, vars.ground.floorSegments, globals);
-
-    p5.noLoop();
+    drawBuilding(p5, vars.building, vars.globals);
+    drawGround(p5, vars.ground.floorSegments, vars.globals);
   };
 
   return <P5Sketch draw={draw} setup={setup} />;
