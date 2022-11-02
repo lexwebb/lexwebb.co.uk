@@ -16,6 +16,7 @@ export interface Building {
 
 export interface Room {
   x: number;
+  yJiggle: number;
   width: number;
   height: number;
   type: "room" | "spire" | "crenelation";

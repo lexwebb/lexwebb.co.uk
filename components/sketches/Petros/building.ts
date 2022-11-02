@@ -88,6 +88,7 @@ export const generateBuilding = (p5: P5, globals: Globals): Building => {
           height: type === "spire" ? 2 : p5.round(p5.random(1, 2)),
           type,
           canHaveBalcony: p5.floor(p5.random(1, 10)) === 1,
+          yJiggle: p5.random(-globals.FLOOR_JIGGLE, globals.FLOOR_JIGGLE),
         };
 
         rooms.push(room);
@@ -131,7 +132,7 @@ export const drawBuilding = (
         const roomOffset = xOffset + room.x * layerRoomSize;
 
         const xPos = roomOffset;
-        const yPos = globals.FLOOR_HEIGHT;
+        const yPos = globals.FLOOR_HEIGHT + room.yJiggle * 2;
         const width = room.width * layerRoomSize;
         const height = -(layerHeightOffset + room.height * globals.ROOM_SIZE);
         const radius = 3;
