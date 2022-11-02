@@ -1,6 +1,7 @@
 import fs from "fs";
 
 import { NextPage } from "next";
+import Image from "next/image";
 import React from "react";
 
 import Markdown from "../../components/Markdown";
@@ -8,6 +9,7 @@ import Page from "../../components/Page";
 import SketchContainer from "../../components/SketchContainer";
 import SketchControls from "../../components/SketchControls";
 import PetrosSketch from "../../components/sketches/Petros";
+import styles from "../../styles/Petros.module.scss";
 
 interface Props {
   markdown: string;
@@ -32,7 +34,18 @@ const Petros: NextPage<Props> = ({ markdown }) => {
           regenerateText="Make me a house"
         />
       </SketchContainer>
-      <Markdown markdown={markdown} />
+      <div className={styles.blurbContainer}>
+        <div className={styles.blurbImage}>
+          <Image
+            src="/petros.png"
+            alt="Petros Painting"
+            layout="intrinsic"
+            width={200}
+            height={300}
+          />
+        </div>
+        <Markdown markdown={markdown} />
+      </div>
     </Page>
   );
 };

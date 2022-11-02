@@ -19,4 +19,5 @@ export interface Room {
   width: number;
   height: number;
   type: "room" | "spire" | "crenelation";
+  canHaveBalcony: boolean;
 }

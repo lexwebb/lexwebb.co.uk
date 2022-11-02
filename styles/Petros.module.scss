@@ -1,0 +1,15 @@
+.blurbContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  .blurbImage {
+    width: 200px;
+    flex: initial;
+  }
+
+  div {
+    flex: 1;
+  }
+}

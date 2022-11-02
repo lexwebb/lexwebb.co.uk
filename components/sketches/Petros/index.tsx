@@ -5,8 +5,10 @@ import useDarkMode from "use-dark-mode";
 import P5Sketch from "../../P5Sketch";
 import { useSketch } from "../../SketchContainer";
 import { drawBuilding, generateBuilding } from "./building";
+import { drawClouds, generateClouds } from "./clouds";
 import { drawGround, getGroundVars } from "./ground";
-import { Globals } from "./types";
+import { drawStones, generateStones } from "./stones";
+import { Building, Globals } from "./types";
 
 const Petros: React.FC = () => {
   const { height, params } = useSketch();
@@ -29,16 +31,19 @@ const Petros: React.FC = () => {
 
       const seed = p5.random(1000);
       p5.randomSeed(seed);
-      console.log(seed);
 
       const ground = getGroundVars(p5, globals);
       const building = generateBuilding(p5, globals);
+      const stones = generateStones(p5, globals, building);
+      const clouds = generateClouds(p5, globals);
 
       return {
         foreground: value ? "#fff" : "#000",
         background: value ? "#000" : "#fff",
         ground,
         building,
+        stones,
+        clouds,
         globals,
         seed,
       };
@@ -64,14 +69,28 @@ const Petros: React.FC = () => {
 
     p5.background(vars.background);
 
-    // setup colors
-    p5.color(vars.foreground);
-    p5.fill(vars.background);
-    p5.strokeWeight(4);
-    p5.stroke(vars.foreground);
+    const reset = () => {
+      p5.color(vars.foreground);
+      p5.fill(vars.background);
+      p5.strokeWeight(4);
+      p5.stroke(vars.foreground);
+    };
 
-    drawBuilding(p5, vars.building, vars.globals);
+    // setup colors
+    reset();
+
+    drawClouds(p5, vars.clouds);
+
+    drawBuilding(p5, vars.building, vars.globals, 1);
     drawGround(p5, vars.ground.floorSegments, vars.globals);
+
+    p5.noStroke();
+    p5.fill(vars.foreground);
+
+    drawStones(p5, vars.stones);
+
+    reset();
+    drawBuilding(p5, vars.building, vars.globals, 0, 1);
   };
 
   return <P5Sketch draw={draw} setup={setup} />;
