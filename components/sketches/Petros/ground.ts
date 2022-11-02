@@ -41,9 +41,6 @@ export const drawGround = (
     p5.curveVertex(segment.x, segment.y);
   });
 
-  // end right
-  p5.curveVertex(p5.width, globals.FLOOR_HEIGHT);
-
   p5.vertex(p5.width + 50, globals.FLOOR_HEIGHT);
   p5.vertex(p5.width + 50, p5.height + 50);
   p5.vertex(-50, p5.height + 50);
