@@ -49,5 +49,5 @@
 
 @mixin transition-mode() {
   transition: all globals.$mode-transition-speed ease;
-  transition-property: color, background-color, border-color, padding, font-size;
+  transition-property: color, background-color, border-color, padding, font-size, transform;
 }

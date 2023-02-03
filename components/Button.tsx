@@ -13,9 +13,11 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
   ...props
 }) => {
   return (
-    <button className={classNames(styles.button, className)} {...props}>
-      {children}
-    </button>
+    <div className={styles.container}>
+      <button className={classNames(styles.button, className)} {...props}>
+        {children}
+      </button>
+    </div>
   );
 };
 
