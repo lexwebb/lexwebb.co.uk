@@ -12,6 +12,7 @@
   padding: 0.5rem;
   min-width: 7rem;
   font-weight: bold;
+  width: 100%;
   // transition: translate 0.1s ease-in-out;
 
   &:hover {
@@ -27,12 +28,5 @@
   &:focus-visible {
     outline: none;
     border-width: 0.4rem;
-  }
-
-  &::before {
-    content: "";
-    display: block;
-    background-color: var(--color-ui-foreground);
-    width: 100%;
   }
 }
