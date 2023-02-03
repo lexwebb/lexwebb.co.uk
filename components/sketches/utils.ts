@@ -1,5 +1,6 @@
 import P5 from "p5";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type WeightedRandom<T = any> = { value: T; weight: number };
 
 export const getWeightedRandom = (p5: P5, weights: WeightedRandom[]) => {

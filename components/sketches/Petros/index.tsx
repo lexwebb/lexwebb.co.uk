@@ -8,7 +8,7 @@ import { drawBuilding, generateBuilding } from "./building";
 import { drawClouds, generateClouds } from "./clouds";
 import { drawGround, getGroundVars } from "./ground";
 import { drawStones, generateStones } from "./stones";
-import { Building, Globals } from "./types";
+import { Globals } from "./types";
 
 const Petros: React.FC = () => {
   const { height, params } = useSketch();
@@ -35,7 +35,7 @@ const Petros: React.FC = () => {
       const ground = getGroundVars(p5, globals);
       const building = generateBuilding(p5, globals);
       const stones = generateStones(p5, globals, building);
-      const clouds = generateClouds(p5, globals);
+      const clouds = generateClouds(p5);
 
       return {
         foreground: value ? "#fff" : "#000",
@@ -57,7 +57,7 @@ const Petros: React.FC = () => {
     }
   }, [getVars]);
 
-  const setup = (p5: P5, canvasParentRef: Element) => {
+  const setup = (p5: P5) => {
     p5Ref.current = p5;
   };
 

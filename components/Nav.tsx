@@ -5,6 +5,7 @@ import useDarkMode from "use-dark-mode";
 
 import { routes } from "../config/routes";
 import styles from "./Nav.module.scss";
+import Typography from "./Typography";
 
 function Nav() {
   const { value: isDarkMode, toggle } = useDarkMode();
@@ -14,7 +15,14 @@ function Nav() {
       <div className={styles.nav} data-animate="color">
         {Object.entries(routes).map(([path, route]) => (
           <Link href={path} key={path} aria-label={route.name} legacyBehavior>
-            <button>{createElement(route.icon, {})}</button>
+            <button>
+              {createElement(route.icon, {})}
+              <div>
+                <Typography as="label" size="extraSmall">
+                  {route.name}
+                </Typography>
+              </div>
+            </button>
           </Link>
         ))}
         <span className={styles.divider} />

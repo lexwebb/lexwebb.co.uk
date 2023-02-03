@@ -20,7 +20,7 @@ export const routes: { [path: string]: RouteConfig } = {
     icon: RiFileList2Line,
   },
   "/sketches": {
-    name: "Sketches",
+    name: "Sketch",
     icon: RiPencilRuler2Line,
   },
 };

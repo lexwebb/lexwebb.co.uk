@@ -1,7 +1,6 @@
 import P5 from "p5";
 
 import { sequence } from "../utils";
-import { Globals } from "./types";
 
 export type Cloud = {
   x: number;
@@ -9,7 +8,7 @@ export type Cloud = {
   points: P5.Vector[];
 };
 
-export const generateClouds = (p5: P5, globals: Globals): Cloud[] => {
+export const generateClouds = (p5: P5): Cloud[] => {
   const clouds = p5.floor(p5.random(2, 5));
   const numClouds = sequence(clouds);
 

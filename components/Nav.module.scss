@@ -28,13 +28,28 @@
 
     a,
     button {
-      font-size: 2rem;
-      height: 2rem;
       color: var(--color-ui-foreground);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      svg {
+        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
+      }
+
+      div {
+        width: 100%;
+      }
 
       @include mixins.md {
-        font-size: 3rem;
-        height: 3rem;
+        svg {
+          font-size: 3rem;
+          width: 3rem;
+          height: 3rem;
+        }
+        width: 3rem;
       }
 
       &:hover {

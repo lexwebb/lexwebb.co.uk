@@ -24,7 +24,7 @@ const Input: React.FC<Props> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <Typography as="label" size="extraSmall" for={name}>
+      <Typography as="label" size="extraSmall">
         {label}
       </Typography>
       <span>
