@@ -3,7 +3,7 @@ import fs from "fs";
 import { NextPage } from "next";
 import Image from "next/legacy/image";
 import React from "react";
-import { RiLinkedinBoxFill } from "react-icons/ri";
+import { RiLinkedinBoxFill, RiYoutubeFill } from "react-icons/ri";
 
 import Markdown from "../components/Markdown";
 import Page from "../components/Page";
@@ -34,6 +34,10 @@ const Home: NextPage<Props> = ({ markdown }) => {
         <a href="https://www.linkedin.com/in/lex-southin-webb-76b582103/">
           <RiLinkedinBoxFill />
           Linkedin // Lex Southin-Webb
+        </a>
+        <a href="https://www.youtube.com/@InfiniteBoxStudios">
+          <RiYoutubeFill />
+          Youtube // Infinite Box Studios
         </a>
       </div>
       <div className={styles.about}>
