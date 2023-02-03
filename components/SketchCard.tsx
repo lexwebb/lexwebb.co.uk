@@ -4,7 +4,6 @@ import { TiArrowRightThick } from "react-icons/ti";
 
 import { Sketch } from "../types";
 import Button from "./Button";
-import Card from "./Card";
 import styles from "./SketchCard.module.scss";
 import Typography from "./Typography";
 
