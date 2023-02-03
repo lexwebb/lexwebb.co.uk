@@ -9,6 +9,7 @@
   &:hover {
     background-color: var(--color-ui-hover);
     color: var(--color-ui-background);
+    cursor: pointer;
   }
 
   &:active {
