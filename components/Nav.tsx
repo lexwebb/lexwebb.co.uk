@@ -13,7 +13,7 @@ function Nav() {
     <div className={styles.navContainer}>
       <div className={styles.nav} data-animate="color">
         {Object.entries(routes).map(([path, route]) => (
-          <Link href={path} key={path} aria-label={route.name}>
+          <Link href={path} key={path} aria-label={route.name} legacyBehavior>
             <button>{createElement(route.icon, {})}</button>
           </Link>
         ))}

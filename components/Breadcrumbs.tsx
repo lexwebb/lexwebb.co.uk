@@ -24,9 +24,7 @@ const Breadcrumbs: React.FC<Props> = ({ className }) => {
       </span>
       {crumbs.slice(0, crumbs.length).map((crumb, index) => (
         <div key={index} className={styles.linkContainer}>
-          <Link href={crumb.path}>
-            <a>{crumb.name}</a>
-          </Link>
+          <Link href={crumb.path}>{crumb.name}</Link>
         </div>
       ))}
     </div>

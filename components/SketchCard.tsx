@@ -12,17 +12,15 @@ type Props = {
 
 const SketchCard: React.FC<Props> = ({ sketch }) => {
   return (
-    <Link href={sketch.route}>
-      <a className={styles.cardLink}>
-        <Card>
-          <Typography as="h1" size="large">
-            {sketch.title}
-          </Typography>
-          <Typography as="p" size="medium">
-            {sketch.description}
-          </Typography>
-        </Card>
-      </a>
+    <Link href={sketch.route} className={styles.cardLink}>
+      <Card>
+        <Typography as="h1" size="large">
+          {sketch.title}
+        </Typography>
+        <Typography as="p" size="medium">
+          {sketch.description}
+        </Typography>
+      </Card>
     </Link>
   );
 };

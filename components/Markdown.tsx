@@ -15,11 +15,7 @@ const Markdown: React.FC<Props> = ({ markdown }) => {
       components={{
         a: ({ node: _, ...props }) => {
           if (props.href?.startsWith("/"))
-            return (
-              <Link href={props.href}>
-                <a>{props.children}</a>
-              </Link>
-            );
+            return <Link href={props.href}>{props.children}</Link>;
 
           return <a target="_blank" rel="noopener noreferrer" {...props} />;
         },
