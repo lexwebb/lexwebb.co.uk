@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 
+  &.extraLarge {
+    font-size: 10rem;
+  }
+
   &.large {
     font-size: 2rem;
   }

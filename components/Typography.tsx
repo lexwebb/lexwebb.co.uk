@@ -6,7 +6,7 @@ import styles from "./Typography.module.scss";
 
 export type TypographyProps = {
   as: TypographyAs;
-  size?: "extraSmall" | "small" | "medium" | "large" | "custom";
+  size?: "extraSmall" | "small" | "medium" | "large" | "extraLarge" | "custom";
   className?: string;
 };
 

@@ -1,6 +1,7 @@
 import { IconType } from "react-icons/lib";
 import {
   RiFileList2Line,
+  RiGamepadFill,
   RiHomeLine,
   RiPencilRuler2Line,
 } from "react-icons/ri";
@@ -22,5 +23,9 @@ export const routes: { [path: string]: RouteConfig } = {
   "/sketches": {
     name: "Sketch",
     icon: RiPencilRuler2Line,
+  },
+  "/games": {
+    name: "Games",
+    icon: RiGamepadFill,
   },
 };
