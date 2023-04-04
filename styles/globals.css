@@ -6,9 +6,14 @@ body,
 
 body {
   margin: 0;
+}
+
+* {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5rem;
+  letter-spacing: 0.04rem;
 }
 
 code {

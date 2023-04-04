@@ -1,14 +1,12 @@
 import { NextPage } from "next";
 import React from "react";
 
+import ListPage from "../../components/ListPage";
 import Page from "../../components/Page";
-import SketchCard from "../../components/SketchCard";
-import Typography from "../../components/Typography";
 import { inDevEnvironment } from "../../devMode";
-import styles from "../../styles/Sketches.module.scss";
-import { Sketch } from "../../types";
+import { ListItem } from "../../types";
 
-const sketches: (Sketch & { live: boolean })[] = [
+const sketches: (ListItem & { live: boolean })[] = [
   {
     title: "Petros",
     route: "/sketches/petros",
@@ -31,17 +29,11 @@ const Sketches: NextPage = () => {
   }
 
   return (
-    <Page name="Sketches" className={styles.container}>
-      <Typography as="h1" size="large">
-        Sketches
-      </Typography>
-      <Typography as="p" size="medium">
-        A collection of sketches and experiments
-      </Typography>
-      {liveSketches.map((sketch, key) => (
-        <SketchCard sketch={sketch} key={key} />
-      ))}
-    </Page>
+    <ListPage
+      title="Sketches"
+      description="A collection of sketches and experiments"
+      routes={liveSketches}
+    />
   );
 };
 

@@ -2,25 +2,25 @@ import Link from "next/link";
 import React from "react";
 import { TiArrowRightThick } from "react-icons/ti";
 
-import { Sketch } from "../types";
+import { ListItem } from "../types";
 import Button from "./Button";
-import styles from "./SketchCard.module.scss";
+import styles from "./ListItemCard.module.scss";
 import Typography from "./Typography";
 
 type Props = {
-  sketch: Sketch;
+  sketch: ListItem;
 };
 
-const SketchCard: React.FC<Props> = ({ sketch }) => {
+const ListItemCard: React.FC<Props> = ({ sketch: listItem }) => {
   return (
-    <Link href={sketch.route} className={styles.cardLink}>
+    <Link href={listItem.route} className={styles.cardLink}>
       <Button>
         <div>
           <Typography as="h1" size="large">
-            {sketch.title}
+            {listItem.title}
           </Typography>
           <Typography as="p" size="small">
-            {sketch.description}
+            {listItem.description}
           </Typography>
         </div>
         <TiArrowRightThick />
@@ -29,4 +29,4 @@ const SketchCard: React.FC<Props> = ({ sketch }) => {
   );
 };
 
-export default SketchCard;
+export default ListItemCard;

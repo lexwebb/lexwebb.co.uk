@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import { routes } from "../config/routes";
 import { CrumbContextProvider, useCrumbs } from "../contexts/CrumbContext";
 import styles from "../styles/_app.module.scss";
+import { trpc } from "../utils/trpc";
 
 const MountedProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [mounted, setMounted] = useState(false);
@@ -50,7 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <CrumbContextProvider>
           <RouteChangeHandler>
             <Layout>
-              <AnimatePresence exitBeforeEnter initial={false}>
+              <AnimatePresence mode="wait" initial={false}>
                 <Component {...pageProps} />
               </AnimatePresence>
             </Layout>
@@ -61,4 +62,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default trpc.withTRPC(MyApp);

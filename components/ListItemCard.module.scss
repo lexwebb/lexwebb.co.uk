@@ -16,9 +16,23 @@
     }
   }
 
+  .thumbText {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   svg {
     font-size: 2rem;
     width: 2rem;
     height: 2rem;
+    min-width: 2rem;
   }
 }

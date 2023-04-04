@@ -1,4 +1,9 @@
-import React, { useCallback } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useReducer,
+} from "react";
 
 type Crumb = {
   name: string;
@@ -16,7 +21,7 @@ interface CrumbContextType extends CrumbState {
   registerPage: (name: string, path: string) => void;
 }
 
-const CrumbContext = React.createContext<CrumbContextType>(
+const CrumbContext = createContext<CrumbContextType>(
   null as unknown as CrumbContextType
 );
 
@@ -45,7 +50,6 @@ const crumbReducer = (
         currentPage: state.currentPage,
       };
     case "register":
-      console.log("register", action.name, action.path);
       return {
         crumbs: state.crumbs,
         currentPage: {
@@ -64,7 +68,7 @@ const crumbReducer = (
 export const CrumbContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [crumbs, dispatch] = React.useReducer(crumbReducer, { crumbs: [] });
+  const [crumbs, dispatch] = useReducer(crumbReducer, { crumbs: [] });
 
   const addCrumb = useCallback(
     (crumb: string, path: string) => dispatch({ type: "add", crumb, path }),
@@ -91,6 +95,6 @@ export const CrumbContextProvider: React.FC<React.PropsWithChildren> = ({
   );
 };
 
-export const useCrumbs = () => React.useContext(CrumbContext);
+export const useCrumbs = () => useContext(CrumbContext);
 
 export default CrumbContext;

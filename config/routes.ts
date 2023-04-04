@@ -25,7 +25,7 @@ export const routes: { [path: string]: RouteConfig } = {
     icon: RiPencilRuler2Line,
   },
   "/games": {
-    name: "Games",
+    name: "Game Dev",
     icon: RiGamepadFill,
   },
 };
