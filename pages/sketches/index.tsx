@@ -13,6 +13,12 @@ const sketches: (ListItem & { live: boolean })[] = [
     description: "For my grandfather, artist and inspiration",
     live: true,
   },
+  {
+    title: "Life",
+    route: "/sketches/life",
+    description: "An experiment with web optimization fo Conway's Game of Life",
+    live: true,
+  },
 ];
 
 const Sketches: NextPage = () => {

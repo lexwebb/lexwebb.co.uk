@@ -11,9 +11,12 @@ const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
 interface ComponentProps {
   setup?: (p5: P5, canvasParentRef: Element) => void;
   draw: (p5: P5) => void;
+  mouseClicked?: (p5: P5) => void;
+  mousePressed?: (p5: P5) => void;
+  mouseDragged?: (p5: P5) => void;
 }
 
-const P5Sketch: React.FC<ComponentProps> = ({ setup, draw }) => {
+const P5Sketch: React.FC<ComponentProps> = ({ setup, draw, ...props }) => {
   const { width, height } = useSketch();
 
   const defaultSetup = (p5: P5, canvasParentRef: Element) => {
@@ -26,7 +29,7 @@ const P5Sketch: React.FC<ComponentProps> = ({ setup, draw }) => {
     draw(p5);
   };
 
-  return <Sketch setup={defaultSetup} draw={defaultDraw} />;
+  return <Sketch setup={defaultSetup} draw={defaultDraw} {...props} />;
 };
 
 export default P5Sketch;
