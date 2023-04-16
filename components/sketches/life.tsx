@@ -38,14 +38,6 @@ const Life: React.FC = () => {
   const setup = (p5: P5) => {
     p5Ref.current = p5;
 
-    console.log(width, height);
-
-    // grid[1][2] = 1;
-    // grid[2][3] = 1;
-    // grid[3][1] = 1;
-    // grid[3][2] = 1;
-    // grid[3][3] = 1;
-
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
         if (grid[i] === undefined) grid[i] = [];

@@ -19,6 +19,12 @@ const sketches: (ListItem & { live: boolean })[] = [
     description: "An experiment with web optimization fo Conway's Game of Life",
     live: true,
   },
+  {
+    title: "Liney Noise",
+    route: "/sketches/liney-noise",
+    description: "An experiment involving lines... and noise",
+    live: true,
+  },
 ];
 
 const Sketches: NextPage = () => {
