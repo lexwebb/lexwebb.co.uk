@@ -21,8 +21,9 @@ const LineyNoise: React.FC = () => {
       return {
         foreground: value ? "#fff" : "#000",
         background: value ? "#000" : "#fff",
-        numberOfLines: 100,
-        resolution: 10,
+        numberOfLines: 50,
+        resolution: 100,
+        displacement: 50,
         seed,
       };
     },
@@ -51,19 +52,23 @@ const LineyNoise: React.FC = () => {
       p5.color(vars.foreground);
       p5.fill(vars.foreground);
       p5.stroke(vars.foreground);
-      p5.strokeWeight(1);
+      p5.strokeWeight(2);
       p5.noFill();
     };
 
     const spacing = height / vars.numberOfLines;
 
-    for (let row = 0; row < vars.numberOfLines; row++) {
+    const res = width / vars.resolution;
+    for (let row = 0; row <= vars.numberOfLines; row++) {
       p5.beginShape();
-      for (let col = 0; col < width; col += vars.resolution) {
+      for (let col = 0; col <= width; col += res) {
+        const noise = p5.noise(
+          row / 10,
+          col / vars.displacement,
+          p5.frameCount / 500
+        );
         const y =
-          row * spacing +
-          p5.noise(row / 10, col / 10, p5.frameCount / 500) * 20 -
-          5;
+          row * spacing + noise * vars.displacement - vars.displacement / 2;
         const x = col;
         p5.curveVertex(x, y);
       }
