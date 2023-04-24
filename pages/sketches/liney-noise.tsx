@@ -5,14 +5,14 @@ import Page from "../../components/Page";
 import SketchContainer from "../../components/SketchContainer";
 import LineyNoiseSketch from "../../components/sketches/lineyNoise";
 
-const Life: NextPage = () => {
+const LineyNoise: NextPage = () => {
   return (
-    <Page name="Life">
-      <SketchContainer height={500} width={1000}>
+    <Page name="Liney Noise">
+      <SketchContainer height={500}>
         <LineyNoiseSketch />
       </SketchContainer>
     </Page>
   );
 };
 
-export default Life;
+export default LineyNoise;
