@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+hr {
+  @apply my-8 border-0 border-t border-gray-400;
+}
+
+p {
+  @apply my-4;
+}
+
+li {
+  @apply mx-2;
+}
+
+li::before {
+  content: "•";
+  @apply text-indigo-600;
+}
