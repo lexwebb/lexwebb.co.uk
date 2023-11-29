@@ -3,7 +3,7 @@
 I'm a software developer with a passion for front-end website development. I've spent much of my working time on enterprise data visualization software and content delivery platforms. In my spare time, I like to experiment with new web technology as well as dabble in video game development.
 
 ## What am I doing right now?
-At the moment I am working on a game development project that i've been thinking about for a long time. It's a bit of a diversion from my professional skill-set, but i'm digging up some old C# experience and cracking on with it,
+At the moment I am working full time at Board Intelligence as a Senior Front-End Developer. I am also working on a few side projects in my spare time, including a [video game](/games), and a tabletop gaming AI assistant.
 
 ## How did I get here?
 

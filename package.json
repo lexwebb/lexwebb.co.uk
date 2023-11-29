@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "ts:build": "tsc --noEmit",
+    "ts:build": "tsc --noEmit --p tsconfig.json --skipLibCheck",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

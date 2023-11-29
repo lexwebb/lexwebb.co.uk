@@ -1,12 +1,24 @@
 ## SKILLS
 
 - **Languages​**: Typescript, Javascript, CSS/SASS, C#
-- **Frameworks and Databases**​: React, Redux, NodeJS, Next.js, Postgres, Vue, Vuex, GraphQL, Apollo GraphQL, OAuth, Webpack, Jest, Serverless, Terraform, .NET, .NET Core, MS SQL Server, Bootstrap
+- **Frameworks and Databases**​: React, NodeJS, Next.js, NestJS, Zustand, Postgres, Redux, GraphQL, Apollo GraphQL, OAuth, Webpack, Jest, Serverless, Terraform, .NET, .NET Core, MS SQL Server, Bootstrap
 - **Cloud and Other**​: AWS, Azure, Docker, Github Actions, Jenkins, Bamboo CI, MFE's (Micro front-ends), Unity
 
 ---
 
 ## EXPERIENCE
+
+---
+
+### **Board Intelligence** - Senior Frontend Engineer
+May 2023 - Present
+
+- Developing and maintaining the flagship product, a React based board paper writing application.
+- Expanding on editing tools for realtime multi-user editing.
+- Developing custom extensions for the WYSIWYG editor.
+- Implementing AI assistant features into the UI to help users write better board papers.
+- Participate in code reviews and mentoring of junior developers.
+- Working with other front end developers to improve the codebase and development processes.
 
 ### **Infinite Box Studios** - Everything
 December 2022 - Present

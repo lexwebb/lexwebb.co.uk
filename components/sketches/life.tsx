@@ -85,7 +85,7 @@ const Life: React.FC = () => {
               neighborCol < width
             ) {
               // increment the neighbor count if the neighbor is alive
-              neighbors += grid[neighborRow][neighborCol];
+              neighbors += grid[neighborRow]?.[neighborCol] || 0;
             }
           }
         }
