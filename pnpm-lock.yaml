@@ -97,6 +97,9 @@ devDependencies:
   '@types/node':
     specifier: 18.11.18
     version: 18.11.18
+  '@types/p5':
+    specifier: ^1.7.4
+    version: 1.7.4
   '@types/react':
     specifier: 18.0.27
     version: 18.0.27
@@ -4819,6 +4822,10 @@ packages:
   /@types/p5@1.7.0:
     resolution: {integrity: sha512-6AnjmW98/edgXB+pYDBx7t6QbCogIG6NUzey93JpGTZA4096C+KjSN8y0sj43QRd9XtblrAhoRXHj1pFZ2vsCg==}
     dev: false
+
+  /@types/p5@1.7.4:
+    resolution: {integrity: sha512-cMF3SvlBSzJV9m3enUYBx9UvJmQP9fxmPS17EDtYJVCQwwNMc/BRrDtHUHaxZH+BhuESNuUnfUKNVpJIjRT+Xw==}
+    dev: true
 
   /@types/parse-json@4.0.2:
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
