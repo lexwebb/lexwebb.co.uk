@@ -2,4 +2,27 @@
   display: flex;
   justify-content: space-between;
   overflow: hidden;
+
+  & span {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 3rem;
+
+    position: relative;
+
+    @media screen and (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    color: orange;
+
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      top: -0.2rem;
+      left: -0.2rem;
+      color: var(--color-ui-foreground);
+    }
+  }
 }

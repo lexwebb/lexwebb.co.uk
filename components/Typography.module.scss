@@ -2,9 +2,15 @@
   margin: 0;
   padding: 0;
 
-  &.extraLarge {
+  &.huge {
     font-size: 10rem;
     line-height: 10rem;
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  &.extraLarge {
+    font-size: 3rem;
+    line-height: 3rem;
     font-family: "Space Grotesk", sans-serif;
   }
 
@@ -52,5 +58,34 @@
 
   &.medium {
     font-weight: 500;
+  }
+
+  &.drop {
+    position: relative;
+    z-index: 0;
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0.05em;
+      left: 0.05em;
+      color: var(--drop-color);
+      z-index: -1;
+    }
+  }
+}
+
+span.typography {
+  display: inline-block;
+  width: 100%;
+}
+
+:global(.dark-mode) {
+  .typography {
+    &.drop {
+      color: var(--drop-color);
+      &::before {
+        color: var(--color-ui-foreground);
+      }
+    }
   }
 }

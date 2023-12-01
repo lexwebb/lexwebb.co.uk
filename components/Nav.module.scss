@@ -14,16 +14,16 @@
 
   .nav {
     padding: 1rem 1rem;
-    border-top: 0.5rem solid var(--color-ui-foreground);
     display: flex;
     flex-direction: row;
     gap: 2rem;
+    border-top: 0.1rem dashed var(--color-ui-foreground);
 
     @include mixins.md {
       padding: 2rem 1rem;
       flex-direction: column;
       border-top: none;
-      border-right: 0.5rem solid var(--color-ui-foreground);
+      border-right: 0.1rem dashed var(--color-ui-foreground);
     }
 
     a,

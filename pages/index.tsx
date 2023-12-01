@@ -9,6 +9,7 @@ import Markdown from "../components/Markdown";
 import Page from "../components/Page";
 import GithubIcon from "../icons/GithubIcon";
 import styles from "../styles/Home.module.scss";
+import Typography from "../components/Typography";
 
 interface Props {
   markdown: string;
@@ -27,18 +28,47 @@ const Home: NextPage<Props> = ({ markdown }) => {
         />
       </div>
       <div className={styles.links}>
-        <a href="https://github.com/lexwebb">
-          <GithubIcon />
-          Github // lexwebb
-        </a>
-        <a href="https://www.linkedin.com/in/lex-southin-webb-76b582103/">
-          <RiLinkedinBoxFill />
-          Linkedin // Lex Southin-Webb
-        </a>
-        <a href="https://www.youtube.com/@InfiniteBoxStudios">
-          <RiYoutubeFill />
-          Youtube // Infinite Box Studios
-        </a>
+        <div className={styles.linkRootDash} />
+        <div className={styles.linkDashContainer}>
+          <div className={styles.linkDash} />
+          <div className={styles.linkDash} />
+          <div className={styles.linkDash} />
+        </div>
+        <div className={styles.linksInner}>
+          <a href="https://github.com/lexwebb">
+            <GithubIcon />
+            <Typography
+              as="span"
+              size="custom"
+              weight="bold"
+              className={styles.linkText}
+            >
+              Github // lexwebb
+            </Typography>
+          </a>
+          <a href="https://www.linkedin.com/in/lex-southin-webb-76b582103/">
+            <RiLinkedinBoxFill style={{ color: "#0077B5" }} />
+            <Typography
+              as="span"
+              size="custom"
+              weight="bold"
+              className={styles.linkText}
+            >
+              Linkedin // Lex Southin-Webb
+            </Typography>
+          </a>
+          <a href="https://www.youtube.com/@InfiniteBoxStudios">
+            <RiYoutubeFill style={{ color: "#FF0000" }} />
+            <Typography
+              as="span"
+              size="custom"
+              weight="bold"
+              className={styles.linkText}
+            >
+              Youtube // Infinite Box Studios
+            </Typography>
+          </a>
+        </div>
       </div>
       <div className={styles.about}>
         <Markdown markdown={markdown} />

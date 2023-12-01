@@ -23,11 +23,57 @@
   .about {
     grid-area: about;
   }
+
   .links {
     grid-area: links;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    align-items: center;
+
+    @include mixins.md {
+      margin-left: -2rem;
+    }
+
+    .linkRootDash {
+      width: 2rem;
+      border-top: 0.1rem dashed var(--color-ui-foreground);
+      display: none;
+
+      @include mixins.md {
+        display: block;
+      }
+    }
+
+    .linkDashContainer {
+      display: none;
+      border-left: 0.1rem dashed var(--color-ui-foreground);
+      margin: 24px 1rem 24px 0;
+      height: calc(100% - 48px);
+
+      @include mixins.md {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .linkDash {
+        width: 1rem;
+        border-top: 0.1rem dashed var(--color-ui-foreground);
+      }
+    }
+
+    .linksInner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      height: 100%;
+    }
+
+    .linkText {
+      font-size: min(7vw, 2rem);
+      line-height: min(8vw, 2.5rem);
+    }
 
     a {
       color: var(--color-ui-foreground);
@@ -37,6 +83,7 @@
       font-size: 1rem;
       text-decoration: none;
       font-family: "Space Grotesk", sans-serif;
+      transition: opacity 0.2s ease-in-out;
 
       @include mixins.md {
         font-size: 1.5rem;
@@ -47,7 +94,7 @@
       }
 
       &:hover {
-        color: var(--color-ui-hover);
+        opacity: 0.8;
       }
 
       svg {
@@ -76,7 +123,7 @@
     grid-area: image;
     display: flex;
     justify-content: center;
-    border: 0.5rem solid var(--color-ui-foreground);
+    border: 1px dashed var(--color-ui-foreground);
     border-radius: 100%;
     background-color: #aaa;
     width: 8rem;

@@ -6,4 +6,5 @@ export type TypographyAs =
   | "h5"
   | "h6"
   | "p"
-  | "label";
+  | "label"
+  | "span";

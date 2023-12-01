@@ -16,7 +16,9 @@ const SpacedTypography: React.FC<Props & TypographyProps> = ({
   return (
     <Typography className={classNames(styles.container, className)} {...props}>
       {children.split("").map((letter, index) => (
-        <span key={index}>{letter}</span>
+        <span key={index} data-text={letter}>
+          {letter}
+        </span>
       ))}
     </Typography>
   );

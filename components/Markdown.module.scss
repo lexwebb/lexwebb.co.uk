@@ -1,6 +1,7 @@
 .container {
   line-height: 1.5rem;
   letter-spacing: 0.04rem;
+  backdrop-filter: blur(0.5rem);
 
   a {
     color: var(--color-ui-foreground);

@@ -7,7 +7,7 @@
 .button {
   background-color: var(--color-ui-background);
   color: var(--color-ui-foreground);
-  border: 0.25rem solid var(--color-ui-foreground);
+  border: 0.1rem dashed var(--color-ui-foreground);
   border-radius: 0.5rem;
   padding: 0.5rem;
   min-width: 7rem;
