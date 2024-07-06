@@ -20,7 +20,7 @@ const Home: NextPage<Props> = ({ markdown }) => {
     <Page className={styles.container}>
       <div className={styles.image}>
         <Image
-          src="/me.png"
+          src="/me.jpeg"
           alt="Lex's Face"
           layout="intrinsic"
           width={400}

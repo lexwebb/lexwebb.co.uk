@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useMemo, useRef, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useResizeObserver } from "usehooks-ts";
 
 import styles from "./SketchContainer.module.scss";
@@ -20,11 +26,11 @@ export const useSketch = () => useContext(SketchContainerContext);
 const SketchContainer: React.FC<
   React.PropsWithChildren<Pick<Props, "width" | "height">>
 > = ({ width, height, children }) => {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
   const size = useResizeObserver({
     ref,
-    box: 'border-box',
-  })
+    box: "border-box",
+  });
   const [params, setParams] = useState<Record<string, number>>({});
 
   const contextValue: Required<Props> = useMemo(
